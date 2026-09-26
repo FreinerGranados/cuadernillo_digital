@@ -85,6 +85,10 @@
                 <span class="eq-label">E<sub>T</sub></span>
                 <span class="eq-math">$E_T = \frac{1}{2} k A^2 = \text{cte}$</span>
               </div>
+              <div class="eq-row eq-force">
+                <span class="eq-label">F</span>
+                <span class="eq-math">$F(x) = -kx$</span>
+              </div>
             </div>
           </div>
         </div>
@@ -188,6 +192,12 @@
                 </div>
                 <span class="color-label">Partícula</span>
               </div>
+              <div class="color-row">
+                <div class="color-swatch" style="background: #ef4444;">
+                  <input type="color" id="color-force" value="#ef4444">
+                </div>
+                <span class="color-label">Vector Fuerza F(x)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -203,6 +213,13 @@
               <label>Cuadrícula</label>
               <div class="toggle-switch">
                 <input type="checkbox" id="toggle-grid" checked>
+                <span class="toggle-slider"></span>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label>Vector Fuerza</label>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-force" checked>
                 <span class="toggle-slider"></span>
               </div>
             </div>
@@ -240,6 +257,10 @@
                 <div class="readout-label">Energía Total (E<sub>T</sub>)</div>
                 <div class="readout-value" id="rdt-ET-val">0.000 J</div>
               </div>
+              <div class="readout-card rdt-force">
+                <div class="readout-label">Fuerza (F)</div>
+                <div class="readout-value" id="rdt-F-val">0.000 N</div>
+              </div>
             </div>
           </div>
         </div>
@@ -271,6 +292,10 @@
             <div class="legend-row">
               <div class="legend-dot" id="legend-dot-total" style="background: #10b981;"></div>
               <span>E_T = ½kA² (cte)</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" id="legend-dot-force" style="background: #ef4444;"></div>
+              <span>F(x) = -kx</span>
             </div>
           </div>
         </div>

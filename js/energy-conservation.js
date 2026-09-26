@@ -26,11 +26,13 @@
       kinetic:  '#3b82f6',
       total:    '#10b981',
       particle: '#f472b6',
+      force:    '#ef4444',
     },
 
     // View
     showGrid: true,
     showBarChart: true,
+    showForceVector: true,
 
     // Canvas
     canvas: null,
@@ -141,16 +143,17 @@
     // Total Energy Line E_T = const
     drawTotalLine(ctx, plot, xRange, yRange, ET);
 
-    // Current position
+    // Current position and physics
     const x = position(state.time);
     const U = potentialEnergy(x);
     const K = kineticEnergy(x);
+    const F = -state.k * x; // Hooke's Law
 
     // Energy bars at particle position
     drawEnergyBars(ctx, x, U, K, ET);
 
-    // Particle on x-axis
-    drawParticle(ctx, x);
+    // Particle on x-axis (with force vector)
+    drawParticle(ctx, x, F);
 
     // Bar chart (optional overlay)
     if (state.showBarChart) {
@@ -158,7 +161,7 @@
     }
 
     // Update readouts
-    updateReadouts(x, U, K, ET);
+    updateReadouts(x, U, K, ET, F);
   }
 
   function drawGrid(ctx, plot, xRange, yRange) {
@@ -390,10 +393,40 @@
     ctx.restore();
   }
 
-  function drawParticle(ctx, x) {
+  function drawParticle(ctx, x, F) {
     ctx.save();
     const p = worldToScreen(x, 0);
     const r = 14;
+
+    // Draw Force Vector (Arrow)
+    if (state.showForceVector && Math.abs(F) > 0.01) {
+      // Scale force so max force (k*A) is equivalent to amplitude width on screen
+      const F_max = state.k * state.amplitude;
+      const screenAmpWidth = Math.abs(worldToScreen(state.amplitude, 0).x - worldToScreen(0, 0).x);
+      const arrowLen = (F / F_max) * screenAmpWidth;
+      
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x + arrowLen, p.y);
+      ctx.strokeStyle = state.colors.force;
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Arrow head
+      ctx.beginPath();
+      const dir = F > 0 ? 1 : -1;
+      ctx.moveTo(p.x + arrowLen, p.y);
+      ctx.lineTo(p.x + arrowLen - dir * 10, p.y - 6);
+      ctx.lineTo(p.x + arrowLen - dir * 10, p.y + 6);
+      ctx.fillStyle = state.colors.force;
+      ctx.fill();
+      
+      // Force label
+      ctx.fillStyle = state.colors.force;
+      ctx.font = '700 13px "Outfit", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('F', p.x + arrowLen + dir * 14, p.y + 4);
+    }
 
     // Glow
     const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 2.5);
@@ -555,11 +588,12 @@
   }
 
   /* ── Readouts ── */
-  function updateReadouts(x, U, K, ET) {
+  function updateReadouts(x, U, K, ET, F) {
     setText('rdt-U-val', U.toFixed(3) + ' J');
     setText('rdt-K-val', K.toFixed(3) + ' J');
     setText('rdt-ET-val', ET.toFixed(3) + ' J');
     setText('rdt-x-val', x.toFixed(3) + ' m');
+    setText('rdt-F-val', F.toFixed(3) + ' N');
     setText('info-time', 't = ' + state.time.toFixed(2) + 's');
   }
 
@@ -641,10 +675,12 @@
     bindColorPicker('color-kinetic', 'kinetic');
     bindColorPicker('color-total', 'total');
     bindColorPicker('color-particle', 'particle');
+    bindColorPicker('color-force', 'force');
 
     // Toggles
     bindToggle('toggle-grid', (checked) => { state.showGrid = checked; });
     bindToggle('toggle-bars', (checked) => { state.showBarChart = checked; });
+    bindToggle('toggle-force', (checked) => { state.showForceVector = checked; });
   }
 
   function bindSlider(sliderId, valId, onChange, formatter) {

@@ -21,6 +21,7 @@
   --color-kinetic: #3b82f6;
   --color-total: #10b981;
   --color-particle: #ec4899;
+  --color-force: #ef4444;
 
   /* Text */
   --text-primary: #1e293b;
@@ -250,6 +251,7 @@ html, body {
 .eq-row.eq-potential { border-left-color: var(--color-potential); }
 .eq-row.eq-kinetic   { border-left-color: var(--color-kinetic); }
 .eq-row.eq-total     { border-left-color: var(--color-total); }
+.eq-row.eq-force     { border-left-color: var(--color-force); }
 
 .eq-row .eq-label {
   font-family: var(--font-mono);
@@ -261,6 +263,7 @@ html, body {
 .eq-row.eq-potential .eq-label { color: var(--color-potential); }
 .eq-row.eq-kinetic   .eq-label { color: var(--color-kinetic); }
 .eq-row.eq-total     .eq-label { color: var(--color-total); }
+.eq-row.eq-force     .eq-label { color: var(--color-force); }
 
 .eq-row .eq-math {
   font-size: 0.85rem;
@@ -580,6 +583,7 @@ input[type="range"]::-moz-range-thumb {
 .readout-card.rdt-kinetic   .readout-value { color: var(--color-kinetic); }
 .readout-card.rdt-total     .readout-value { color: var(--color-total); }
 .readout-card.rdt-position  .readout-value { color: var(--color-particle); }
+.readout-card.rdt-force     .readout-value { color: var(--color-force); }
 
 .readout-card.rdt-total {
   grid-column: 1 / -1;
