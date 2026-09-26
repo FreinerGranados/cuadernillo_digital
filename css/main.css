@@ -206,7 +206,7 @@ html, body {
 
 /* Portada (Page 1) */
 .page.cover-page {
-  background: url('../imagenes/portada.webp') no-repeat center center;
+  background: url('../imagenes/new_portada.webp') no-repeat center center;
   background-size: 100% 100%;
   cursor: pointer;
 }

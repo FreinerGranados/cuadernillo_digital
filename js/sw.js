@@ -15,7 +15,7 @@ const ASSETS_TO_CACHE = [
   './physics-simulator.js',
   './mindmap.js',
   './shm-graphs.js',
-  '../imagenes/portada.webp'
+  '../imagenes/new_portada.webp'
 ];
 
 self.addEventListener('install', (event) => {

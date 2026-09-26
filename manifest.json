@@ -9,9 +9,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "imagenes/portada.webp",
-      "sizes": "1103x1426",
-      "type": "image/webp"
+      "src": "imagenes/icon1.png",
+      "sizes": "any",
+      "type": "image/png"
     }
   ]
 }
