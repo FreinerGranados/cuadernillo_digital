@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conservación de la Energía en el M.A.S. - Física III</title>
+  <meta name="description" content="Simulador interactivo de la conservación de la energía mecánica en el Movimiento Armónico Simple. Visualiza la energía cinética, potencial y total en tiempo real.">
+  <meta name="theme-color" content="#060a14">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/energy-conservation.css">
+  <link rel="stylesheet" href="../css/global-menu.css">
+</head>
+<body>
+
+  <!-- Ambient Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Global Navigation Menu -->
+  <div class="global-nav-menu">
+    <button id="global-nav-toggle" class="global-nav-toggle" aria-label="Abrir Menú">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div id="global-nav-dropdown" class="global-nav-dropdown">
+      <div class="global-nav-header">MENÚ PRINCIPAL</div>
+      <ul>
+        <li><a href="../index.html" class="nav-item">🏠 Inicio / Dashboard</a></li>
+        <li><a href="cuadernillo.html" class="nav-item">📖 Cuadernillo Digital</a></li>
+        <li><a href="shm-graphs.html" class="nav-item">⚙️ Simulador Interactivo</a></li>
+        <li><a href="energia-conservacion.html" class="nav-item">⚡ Conservación de Energía</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- App Shell -->
+  <div class="app-shell">
+
+    <!-- ═══ Top Header ═══ -->
+    <header class="top-header">
+      <div class="header-brand">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="header-titles">
+          <h1>Conservación de la Energía en el M.A.S.</h1>
+          <div class="header-sub">Simulador Interactivo • Física III • UTP</div>
+        </div>
+      </div>
+      <div class="header-badge">
+        <div class="dot"></div>
+        TIEMPO REAL
+      </div>
+    </header>
+
+    <!-- ═══ Main Content ═══ -->
+    <div class="main-layout">
+
+      <!-- ── Sidebar ── -->
+      <aside class="sidebar">
+
+        <!-- Equations Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Ecuaciones de Energía
+          </div>
+          <div class="panel-body">
+            <div class="equation-list">
+              <div class="eq-row eq-potential">
+                <span class="eq-label">U</span>
+                <span class="eq-math">$U(x) = \frac{1}{2} k x^2$</span>
+              </div>
+              <div class="eq-row eq-kinetic">
+                <span class="eq-label">K</span>
+                <span class="eq-math">$K(x) = \frac{1}{2} k (A^2 - x^2)$</span>
+              </div>
+              <div class="eq-row eq-total">
+                <span class="eq-label">E<sub>T</sub></span>
+                <span class="eq-math">$E_T = \frac{1}{2} k A^2 = \text{cte}$</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parameters Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            Parámetros del Sistema
+          </div>
+          <div class="panel-body">
+            <div class="param-group">
+              <div class="param-label">
+                <span>Amplitud ($A$)</span>
+                <span class="param-val" id="val-amp">2.0 m</span>
+              </div>
+              <input type="range" id="param-amp" min="0.5" max="4.0" step="0.1" value="2.0">
+            </div>
+            <div class="param-group">
+              <div class="param-label">
+                <span>Frecuencia angular ($\omega$)</span>
+                <span class="param-val" id="val-omega">2.0 rad/s</span>
+              </div>
+              <input type="range" id="param-omega" min="0.5" max="6.0" step="0.1" value="2.0">
+            </div>
+            <div class="param-group mass-group">
+              <div class="param-label">
+                <span>Masa ($m$)</span>
+                <span class="param-val" id="val-mass">1.0 kg</span>
+              </div>
+              <input type="range" id="param-mass" min="0.1" max="5.0" step="0.1" value="1.0">
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Controles de Simulación
+          </div>
+          <div class="panel-body">
+            <div class="sim-controls">
+              <button class="ctrl-btn btn-play" id="btn-play">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Play
+              </button>
+              <button class="ctrl-btn btn-pause" id="btn-pause">
+                <svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                Pausa
+              </button>
+              <button class="ctrl-btn btn-reset" id="btn-reset">
+                <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Reset
+              </button>
+            </div>
+            <div style="margin-top: 12px;">
+              <div class="param-label" style="margin-bottom: 6px;">
+                <span>Velocidad</span>
+              </div>
+              <div class="speed-selector">
+                <button class="speed-btn" data-speed="0.25">0.25×</button>
+                <button class="speed-btn" data-speed="0.5">0.5×</button>
+                <button class="speed-btn active" data-speed="1">1×</button>
+                <button class="speed-btn" data-speed="2">2×</button>
+                <button class="speed-btn" data-speed="4">4×</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Config Panel -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            Personalizar Colores
+          </div>
+          <div class="panel-body">
+            <div class="color-config">
+              <div class="color-row">
+                <div class="color-swatch" style="background: #f59e0b;">
+                  <input type="color" id="color-potential" value="#f59e0b">
+                </div>
+                <span class="color-label">Energía Potencial U(x)</span>
+              </div>
+              <div class="color-row">
+                <div class="color-swatch" style="background: #3b82f6;">
+                  <input type="color" id="color-kinetic" value="#3b82f6">
+                </div>
+                <span class="color-label">Energía Cinética K(x)</span>
+              </div>
+              <div class="color-row">
+                <div class="color-swatch" style="background: #10b981;">
+                  <input type="color" id="color-total" value="#10b981">
+                </div>
+                <span class="color-label">Energía Total E<sub>T</sub></span>
+              </div>
+              <div class="color-row">
+                <div class="color-swatch" style="background: #f472b6;">
+                  <input type="color" id="color-particle" value="#f472b6">
+                </div>
+                <span class="color-label">Partícula</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display Options -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Opciones de Visualización
+          </div>
+          <div class="panel-body">
+            <div class="toggle-row">
+              <label>Cuadrícula</label>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-grid" checked>
+                <span class="toggle-slider"></span>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label>Balance Energético (Barras)</label>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-bars" checked>
+                <span class="toggle-slider"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Readouts -->
+        <div class="glass-panel">
+          <div class="panel-header">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Mediciones en Tiempo Real
+          </div>
+          <div class="panel-body">
+            <div class="readout-grid">
+              <div class="readout-card rdt-potential">
+                <div class="readout-label">E. Potencial (U)</div>
+                <div class="readout-value" id="rdt-U-val">0.000 J</div>
+              </div>
+              <div class="readout-card rdt-kinetic">
+                <div class="readout-label">E. Cinética (K)</div>
+                <div class="readout-value" id="rdt-K-val">0.000 J</div>
+              </div>
+              <div class="readout-card rdt-position">
+                <div class="readout-label">Posición (x)</div>
+                <div class="readout-value" id="rdt-x-val">0.000 m</div>
+              </div>
+              <div class="readout-card rdt-total">
+                <div class="readout-label">Energía Total (E<sub>T</sub>)</div>
+                <div class="readout-value" id="rdt-ET-val">0.000 J</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ── Canvas Area ── -->
+      <div class="canvas-area">
+        <div class="canvas-wrapper">
+          <canvas id="energy-canvas"></canvas>
+
+          <!-- Floating Info Badge -->
+          <div class="canvas-info-badge">
+            <span class="info-time" id="info-time">t = 0.00s</span>
+            <span>|</span>
+            <span>Conservación: E<sub>T</sub> = U + K</span>
+          </div>
+
+          <!-- Canvas Legend -->
+          <div class="canvas-legend">
+            <div class="legend-row">
+              <div class="legend-dot" id="legend-dot-potential" style="background: #f59e0b;"></div>
+              <span>U(x) = ½kx²</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" id="legend-dot-kinetic" style="background: #3b82f6;"></div>
+              <span>K(x) = ½k(A²−x²)</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" id="legend-dot-total" style="background: #10b981;"></div>
+              <span>E_T = ½kA² (cte)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ Bottom Bar ═══ -->
+    <footer class="bottom-bar">
+      <span>Física III — Sara, Freiner y Daniela — UTP</span>
+      <span><a href="cuadernillo.html">← Cuadernillo Digital</a> · <a href="shm-graphs.html">Simulador Cinemático →</a></span>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/energy-conservation.js"></script>
+  <script src="../js/global-menu.js"></script>
+
+</body>
+</html>
