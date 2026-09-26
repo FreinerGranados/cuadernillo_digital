@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física III - Portal Principal</title>
+  <meta name="theme-color" content="#0a0f1d">
+  <link rel="stylesheet" href="../css/landing.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Aurora Background Effects -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <div class="app-container">
+
+    <!-- Navbar -->
+    <nav class="top-nav">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="logo-icon">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="M5 5l1.5 1.5" />
+          <path d="M17.5 17.5L19 19" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="M5 19l1.5-1.5" />
+          <path d="M17.5 6.5L19 5" />
+        </svg>
+        <div class="logo-text">
+          <span class="title-bold">FÍSICA III</span>
+          <span class="subtitle-small">UTP</span>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#" class="active">Inicio</a></li>
+        <li><a href="cuadernillo.html">Cuadernillo Digital</a></li>
+        <li><a href="shm-graphs.html">Simulador Interactivo</a></li>
+        <li><a href="#">Recursos</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Grid -->
+    <main class="dashboard-grid">
+
+      <!-- Hero Section (Left) -->
+      <section class="hero-section">
+        <h1 class="hero-title">BIENVENIDOS A <br> <span class="highlight">FÍSICA III</span></h1>
+        <div class="hero-authors">Creado por Freiner Granados, Sara Garcia y Daniela Acevedo</div>
+        <p class="hero-desc">
+          Descubre el fascinante mundo del Movimiento Oscilatorio y Armónico Simple a través de la teoría rigurosa y la
+          experimentación interactiva en tiempo real.
+        </p>
+
+        <div class="hero-actions">
+          <a href="cuadernillo.html" class="btn-primary">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            ACCEDER AL <br> CUADERNILLO DIGITAL
+          </a>
+
+          <a href="cuadernillo.html" class="btn-secondary">
+            <span class="btn-sm-text">CAPÍTULO 1</span>
+            <span class="btn-lg-text">Fundamentos</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Right Dashboard Cards -->
+      <section class="cards-section">
+
+        <!-- Top Large Card -->
+        <div class="glass-card card-large">
+          <div class="card-header">
+            <h2>SIMULADOR DE ONDAS Y OSCILACIONES</h2>
+          </div>
+          <div class="card-body">
+            <div class="fake-graph">
+              <svg viewBox="0 0 400 120" class="sine-wave">
+                <path d="M 0,60 Q 25,0 50,60 T 100,60 T 150,60 T 200,60 T 250,60 T 300,60 T 350,60 T 400,60" fill="none"
+                  stroke="#f59e0b" stroke-width="3" />
+                <!-- Ejes -->
+                <line x1="0" y1="60" x2="400" y2="60" stroke="#475569" stroke-width="1" />
+                <line x1="20" y1="0" x2="20" y2="120" stroke="#475569" stroke-width="1" />
+              </svg>
+              <div class="math-eq">$$ y(t) = A \cdot \cos(\omega t + \phi) $$</div>
+            </div>
+            <div class="fake-controls">
+              <div class="f-slider"><label>Frecuencia</label>
+                <div class="track">
+                  <div class="thumb" style="left:40%"></div>
+                </div>
+              </div>
+              <div class="f-slider"><label>Amplitud</label>
+                <div class="track">
+                  <div class="thumb" style="left:70%"></div>
+                </div>
+              </div>
+              <div class="f-slider"><label>Fase</label>
+                <div class="track">
+                  <div class="thumb" style="left:20%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Cards Grid -->
+        <div class="bottom-cards">
+
+          <!-- Card 1 -->
+          <div class="glass-card card-small">
+            <div class="card-badge">1</div>
+            <h3>TU GUÍA DE ESTUDIO</h3>
+            <div class="card-visual visual-notebook">
+              <div class="notebook-mock">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+              <a href="cuadernillo.html" class="btn-overlay">IR AL CUADERNILLO</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card card-small">
+            <div class="card-badge">2</div>
+            <h3>VISUALIZA FENÓMENOS</h3>
+            <div class="card-visual visual-sim">
+              <div class="sim-mock">
+                <svg viewBox="0 0 100 50" class="mini-wave">
+                  <path d="M0,25 Q12,5 25,25 T50,25 T75,25 T100,25" fill="none" stroke="#60a5fa" stroke-width="2" />
+                </svg>
+              </div>
+              <a href="shm-graphs.html" class="btn-overlay">IR AL SIMULADOR</a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- KaTeX just for the fake eq -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+
+</body>
+
+</html>

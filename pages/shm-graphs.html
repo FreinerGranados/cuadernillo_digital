@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.A.S. - Gráficas Interactivas Estilo GeoGebra</title>
+  
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Font Awesome / Lucide Icons using SVG -->
+  <!-- Note: We'll embed inline SVGs for Lucide-style icons to ensure perfect rendering -->
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../css/shm-graphs.css">
+  <link rel="stylesheet" href="../css/global-menu.css">
+</head>
+<body>
+
+  <!-- Global Navigation Menu -->
+  <div class="global-nav-menu">
+    <button id="global-nav-toggle" class="global-nav-toggle" aria-label="Abrir Menú">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div id="global-nav-dropdown" class="global-nav-dropdown">
+      <div class="global-nav-header">MENÚ PRINCIPAL</div>
+      <ul>
+        <li><a href="index.html" class="nav-item">🏠 Inicio / Dashboard</a></li>
+        <li><a href="cuadernillo.html" class="nav-item">📖 Cuadernillo Digital</a></li>
+        <li><a href="shm-graphs.html" class="nav-item">⚙️ Simulador Interactivo</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="app-container">
+    <header class="top-header">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" class="icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <h1>Análisis Gráfico del M.A.S.</h1>
+      </div>
+      <div class="subtitle">Simulador Cinemático Interactivo</div>
+    </header>
+
+    <div class="main-content">
+      
+      <!-- Panel de Ecuaciones y Controles -->
+      <aside class="sidebar">
+        
+        <div class="panel">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Ecuaciones de Movimiento
+          </h2>
+          <div class="equations-box">
+            <div id="eq-x">$$ x(t) = A \cdot \sin(\omega \cdot t + \alpha) $$</div>
+            <div id="eq-v">$$ v(t) = \frac{dx}{dt} = \omega \cdot A \cdot \cos(\omega \cdot t + \alpha) $$</div>
+            <div id="eq-a">$$ a(t) = \frac{dv}{dt} = -\omega^2 \cdot A \cdot \sin(\omega \cdot t + \alpha) $$</div>
+            <hr class="eq-divider">
+            <div id="eq-v-x">$$ v(x) = \pm \omega \sqrt{A^2 - x^2} $$</div>
+            <div id="eq-a-x">$$ a(x) = -\omega^2 \cdot x $$</div>
+            <hr class="eq-divider">
+            <div id="eq-w">$$ \omega = \frac{2\pi}{T} = 2\pi \cdot f $$</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            Parámetros del Sistema
+          </h2>
+          <div class="controls-grid">
+            
+            <div class="control-group">
+              <label for="param-A">Amplitud ($A$): <span id="val-A">2.0</span> m</label>
+              <input type="range" id="param-A" min="0.1" max="10" step="0.1" value="2.0">
+            </div>
+
+            <div class="control-group">
+              <label for="param-w">Frecuencia Angular ($\omega$): <span id="val-w">2.0</span> rad/s</label>
+              <input type="range" id="param-w" min="0.1" max="10" step="0.1" value="2.0">
+            </div>
+
+            <div class="control-group">
+              <label for="param-alpha">Fase Inicial ($\alpha$): <span id="val-alpha">0.0</span> rad</label>
+              <input type="range" id="param-alpha" min="0" max="6.28" step="0.01" value="0">
+            </div>
+
+            <div class="control-group">
+              <label for="param-t">Tiempo para vector Tangente ($t$): <span id="val-t">1.0</span> s</label>
+              <input type="range" id="param-t" min="0" max="10" step="0.01" value="1.0">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+            Visibilidad de Gráficas
+          </h2>
+          <div class="visibility-toggles">
+            <label class="toggle-label x-color"><input type="checkbox" id="toggle-x" checked> Elongación $x(t)$</label>
+            <label class="toggle-label v-color"><input type="checkbox" id="toggle-v" checked> Velocidad $v(t)$</label>
+            <label class="toggle-label a-color"><input type="checkbox" id="toggle-a" checked> Aceleración $a(t)$</label>
+            <label class="toggle-label tangent-color"><input type="checkbox" id="toggle-tangent" checked> Mostrar Vector Tangente</label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Lienzo GeoGebra y Herramientas -->
+      <section class="geogebra-container">
+        
+        <!-- Barra de herramientas flotante -->
+        <div class="geo-toolbar">
+          <div class="tool-group">
+            <button class="tool-btn active" id="tool-pan" title="Arrastrar y Mover (Pan)">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 9l-3 3 3 3"/><path d="M9 5l3-3 3 3"/><path d="M19 9l3 3-3 3"/><path d="M9 19l3 3 3-3"/><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-select" title="Seleccionar Puntos (Select)">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
+            </button>
+          </div>
+          
+          <div class="divider"></div>
+
+          <div class="tool-group">
+            <button class="tool-btn" id="tool-zoom-in" title="Acercar (Zoom In)">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-zoom-out" title="Alejar (Zoom Out)">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-reset" title="Restablecer Vista">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="tool-group relative">
+            <button class="tool-btn" id="tool-palette" title="Estilos Gráficos (Paleta)">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            </button>
+            
+            <!-- Menú Desplegable de Estilos -->
+            <div class="style-menu hidden" id="style-menu">
+              <h3>Estilos Gráficos</h3>
+              <div class="style-row">
+                <label>Curva a editar:</label>
+                <select id="style-curve-select">
+                  <option value="x">Elongación x(t)</option>
+                  <option value="v">Velocidad v(t)</option>
+                  <option value="a">Aceleración a(t)</option>
+                </select>
+              </div>
+              <div class="style-row">
+                <label>Color:</label>
+                <input type="color" id="style-color" value="#0284c7">
+              </div>
+              <div class="style-row">
+                <label>Grosor:</label>
+                <input type="range" id="style-width" min="1" max="6" step="0.5" value="2.5">
+                <span id="val-width">2.5</span>
+              </div>
+              <div class="style-row">
+                <label>Estilo de línea:</label>
+                <select id="style-dash">
+                  <option value="solid">Sólida</option>
+                  <option value="dashed">A rayas</option>
+                  <option value="dotted">Punteada</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canvas Wrapper -->
+        <div class="canvas-wrapper">
+          <canvas id="geogebra-canvas"></canvas>
+          
+          <!-- Badges interactivos (como GeoGebra) -->
+          <div id="geo-coord-readout" class="badge-coord">(t: 0.00s, y: 0.00)</div>
+          <div id="geo-axis-hint-text" class="badge-hint">Arrastra para desplazar el plano cartesiano</div>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="../js/geogebra-engine.js"></script>
+  <script src="../js/shm-graphs.js"></script>
+  <script src="../js/global-menu.js"></script>
+</body>
+</html>

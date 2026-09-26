@@ -1,0 +1,17 @@
+{
+  "name": "Cuaderno Digital de Física III - M.A.S.",
+  "short_name": "Física 3",
+  "description": "Cuaderno científico interactivo sobre Movimiento Oscilatorio y M.A.S. con motor GeoGebra y simuladores en tiempo real. Creado por Sara, Freiner y Daniela.",
+  "start_url": "./pages/index.html",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#0f2744",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "imagenes/portada.webp",
+      "sizes": "1103x1426",
+      "type": "image/webp"
+    }
+  ]
+}

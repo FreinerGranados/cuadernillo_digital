@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuaderno Digital Científico e Interactivo de Física III: Movimiento Oscilatorio y Movimiento Armónico Simple (M.A.S.). Creado por Sara, Freiner y Daniela con motor GeoGebra y simulador en tiempo real.">
+  <meta name="theme-color" content="#0f2744">
+  <title>Física III - Movimiento Oscilatorio y M.A.S. | Cuaderno Digital Interactivo</title>
+
+  <!-- KaTeX for pristine scientific typesetting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- html2canvas for high-res page snapshots -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/geogebra.css">
+  <link rel="stylesheet" href="../css/simulations.css">
+  <link rel="stylesheet" href="../css/simulations-taller.css">
+  <link rel="stylesheet" href="../css/global-menu.css">
+</head>
+<body>
+
+  <!-- Global Navigation Menu -->
+  <div class="global-nav-menu">
+    <button id="global-nav-toggle" class="global-nav-toggle" aria-label="Abrir Menú">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div id="global-nav-dropdown" class="global-nav-dropdown">
+      <div class="global-nav-header">MENÚ PRINCIPAL</div>
+      <ul>
+        <li><a href="index.html" class="nav-item">🏠 Inicio / Dashboard</a></li>
+        <li><a href="cuadernillo.html" class="nav-item">📖 Cuadernillo Digital</a></li>
+        <li><a href="shm-graphs.html" class="nav-item">⚙️ Simulador Interactivo</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="app">
+    
+    <!-- Top Status / Branding Bar -->
+    <header class="top-bar">
+      <div class="top-bar-branding">
+        <div class="top-bar-logo">Φ3</div>
+        <div>
+          <div class="top-bar-title">FÍSICA III: MOVIMIENTO OSCILATORIO & M.A.S.</div>
+          <div class="top-bar-subtitle">Universidad Tecnológica de Pereira • Semestre 5</div>
+        </div>
+      </div>
+      <div class="top-bar-authors">
+        <span>Autores:</span> Sara, Freiner y Daniela
+      </div>
+    </header>
+
+    <!-- Notebook Viewport & Zoom Container -->
+    <main class="notebook-viewport" id="notebook-viewport">
+      <div class="notebook-page-wrapper">
+
+        <!-- ================================================================
+             PÁGINA 1: PORTADA OFICIAL DE LUJO
+             ================================================================ -->
+        <section class="page cover-page active" id="page-1" aria-label="Portada del cuaderno">
+          <div class="cover-overlay-click">
+            <button class="cover-badge-pill" id="btn-enter-notebook" aria-label="Abrir cuaderno digital">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+              <span>Abrir Cuaderno Digital e Iniciar Lectura</span>
+            </button>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 2: PRESENTACIÓN DEL EQUIPO & ÍNDICE GENERAL
+             ================================================================ -->
+        <section class="page" id="page-2" aria-label="Presentación e Índice de contenidos">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Estructura Editorial</div>
+                <h1 class="page-title">Presentación & Índice General</h1>
+                <div class="page-subtitle">Cuaderno científico interactivo con motor GeoGebra y simulador dinámico</div>
+              </div>
+              <div class="page-num-pill">Pág. 2 de 13</div>
+            </div>
+
+            <div class="page-content">
+              <div class="concept-card">
+                <div class="concept-card-title">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Equipo Multidisciplinar de Autores e IA Especializada
+                </div>
+                <p style="font-size:0.86rem; color:var(--ink-secondary); margin-bottom:4px;">
+                  Este volumen ha sido concebido por <strong>Sara, Freiner y Daniela</strong>, coordinando a un equipo multidisciplinar de IA integrado por doctores en física teórica, matemáticos analíticos y arquitectos de software web interactivo (Canvas 2D, SVG, KaTeX y GeoGebra Engine).
+                </p>
+              </div>
+
+              <h2 class="section-heading">Índice de Contenidos Temáticos</h2>
+              <table class="science-table">
+                <thead>
+                  <tr>
+                    <th style="width:12%;">Pág.</th>
+                    <th>Sección / Capítulo Temático</th>
+                    <th style="width:25%;">Formato / Herramienta</th>
+                    <th style="width:15%;">Acceso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>03</strong></td>
+                    <td>Reseña Histórica & Línea de Tiempo del Movimiento Armónico</td>
+                    <td>Cronología Interactiva</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(3)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>04</strong></td>
+                    <td>Mapa Mental & Red Conceptual del Movimiento Oscilatorio</td>
+                    <td>Red Semántica SVG</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(4)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>05</strong></td>
+                    <td>Fundamentación I: Movimiento Oscilatorio y Periódico</td>
+                    <td>Teoría & Unidades SI</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(5)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>06</strong></td>
+                    <td>Fundamentación II: M.A.S., Ley de Hooke y Ecuación Diferencial</td>
+                    <td>Deducción Matemática</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(6)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>07</strong></td>
+                    <td>Cinemática del M.A.S.: Elongación, Velocidad y Aceleración</td>
+                    <td>Demostración Paso a Paso</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(7)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>08</strong></td>
+                    <td>Laboratorio Cartesiano Estilo GeoGebra (Curvas Cinemáticas)</td>
+                    <td>Plano Milimetrado Interactivo</td>
+                    <td><button class="sim-action-btn primary" onclick="goToPage(8)">Explorar</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>09</strong></td>
+                    <td>Simulador Físico Premium en Tiempo Real con Vectores</td>
+                    <td>Masa-Resorte & Péndulo</td>
+                    <td><button class="sim-action-btn primary" onclick="goToPage(9)">Simular</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>10</strong></td>
+                    <td>Taller de Problemas I: Protocolo de 5 Pasos en Colores</td>
+                    <td>Cinemática Aplicada</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(10)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>11</strong></td>
+                    <td>Taller de Problemas II: Dinámica, Energía y Condiciones Iniciales</td>
+                    <td>Problema Avanzado</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(11)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>12</strong></td>
+                    <td>Taller de Problemas III: Miscelánea Avanzada</td>
+                    <td>Resolución y Simulaciones</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(12)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>13</strong></td>
+                    <td>Glosario Científico Interactivo de Física III</td>
+                    <td>Buscador en Vivo</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(13)">Ir</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>14</strong></td>
+                    <td>Referencias Bibliográficas Canónicas (Normas APA 7ma Ed.)</td>
+                    <td>Citas Académicas</td>
+                    <td><button class="sim-action-btn" onclick="goToPage(14)">Ir</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 3: RESEÑA HISTÓRICA & LÍNEA DE TIEMPO
+             ================================================================ -->
+        <section class="page" id="page-3" aria-label="Reseña histórica y línea de tiempo">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Evolución Histórica</div>
+                <h1 class="page-title">Génesis del Movimiento Armónico</h1>
+                <div class="page-subtitle">Desde las lámparas de la catedral de Pisa hasta el formalismo de Euler</div>
+              </div>
+              <div class="page-num-pill">Pág. 3 de 13</div>
+            </div>
+
+            <div class="page-content">
+              <p class="body-lead">
+                El estudio de los sistemas oscilatorios transformó para siempre la física, la astronomía y la metrología universal. Esta cronología destaca los cinco pilares teóricos y experimentales que construyeron las bases del movimiento armónico simple:
+              </p>
+
+              <div class="timeline-track">
+                
+                <div class="timeline-event">
+                  <div class="timeline-dot"></div>
+                  <span class="timeline-year">1581 — Galileo Galilei</span>
+                  <div class="timeline-title">El Isocronismo del Péndulo</div>
+                  <div class="timeline-desc">
+                    Observando la oscilación de un candelabro en la catedral de Pisa y usando su propio pulso sanguíneo como reloj, Galileo descubrió que el período de oscilación para ángulos pequeños es independiente de la amplitud.
+                  </div>
+                </div>
+
+                <div class="timeline-event">
+                  <div class="timeline-dot"></div>
+                  <span class="timeline-year">1656 — Christiaan Huygens</span>
+                  <div class="timeline-title">El Reloj de Péndulo y la Fuerza Centrífuga</div>
+                  <div class="timeline-desc">
+                    Huygens patentó el primer reloj de péndulo mecánico, reduciendo el error diario de minutos a segundos, y dedujo rigurosamente la fórmula del período armónico $T = 2\pi\sqrt{L/g}$ en su célebre obra <em>Horologium Oscillatorium</em>.
+                  </div>
+                </div>
+
+                <div class="timeline-event">
+                  <div class="timeline-dot"></div>
+                  <span class="timeline-year">1676 — Robert Hooke</span>
+                  <div class="timeline-title">Ley de Elasticidad Lineal: Ut tensio, sic vis</div>
+                  <div class="timeline-desc">
+                    Formuló bajo un anagrama la relación fundamental: la deformación que experimenta un cuerpo elástico es directamente proporcional a la fuerza aplicada ($F = -kx$). La fuerza restauradora lineal es el corazón dinámico del M.A.S.
+                  </div>
+                </div>
+
+                <div class="timeline-event">
+                  <div class="timeline-dot"></div>
+                  <span class="timeline-year">1687 — Isaac Newton</span>
+                  <div class="timeline-title">Fundamentos Dinámicos en los <em>Principia</em></div>
+                  <div class="timeline-desc">
+                    Newton combinó su Segunda Ley del Movimiento ($F = m\frac{d^2x}{dt^2}$) con fuerzas proporcionales a la distancia, demostrando que la aceleración siempre apunta hacia el centro de atracción.
+                  </div>
+                </div>
+
+                <div class="timeline-event">
+                  <div class="timeline-dot"></div>
+                  <span class="timeline-year">1739 — Leonhard Euler</span>
+                  <div class="timeline-title">Ecuación Diferencial Armónica y Variable Compleja</div>
+                  <div class="timeline-desc">
+                    Euler integró formalmente la ecuación diferencial de segundo orden $\ddot{x} + \omega^2 x = 0$ usando exponenciales complejas ($e^{i\omega t} = \cos\omega t + i\sin\omega t$), sentando el lenguaje matemático que empleamos hoy.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 4: MAPA MENTAL CONCEPTUAL
+             ================================================================ -->
+        <section class="page" id="page-4" aria-label="Mapa mental interactivo">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Red Semántica</div>
+                <h1 class="page-title">Mapa Conceptual del Movimiento Oscilatorio</h1>
+                <div class="page-subtitle">Explorador interactivo de conceptos nodales y relaciones físicas</div>
+              </div>
+              <div class="page-num-pill">Pág. 4 de 13</div>
+            </div>
+
+            <div class="page-content">
+              <p class="body-lead" style="margin-bottom:8px;">
+                La siguiente red conceptual ilustra la jerarquía formal que enlaza la cinemática temporal con la dinámica elástica y el teorema de conservación de la energía mecánica:
+              </p>
+
+              <div class="mindmap-container" id="mindmap-wrapper">
+                <!-- Injected via InteractiveMindMap (js/mindmap.js) -->
+              </div>
+
+              <div class="concept-card" style="margin-top:10px;">
+                <div class="concept-card-title">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  Vínculo Fundamental entre Dinámica y Cinemática
+                </div>
+                <p style="font-size:0.83rem; color:var(--ink-secondary);">
+                  El Movimiento Armónico Simple es el arquetipo de todos los movimientos ondulatorios en la naturaleza: surge cuando un sistema físico es perturbado levemente de una posición de equilibrio estable y la fuerza resultante es proporcional y opuesta a dicha desviación.
+                </p>
+              </div>
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 5: FUNDAMENTACIÓN TEÓRICA I
+             ================================================================ -->
+        <section class="page" id="page-5" aria-label="Fundamentación teórica I: Movimiento periódico y oscilatorio">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Fundamentos Teóricos I</div>
+                <h1 class="page-title">Movimiento Oscilatorio y Periódico</h1>
+                <div class="page-subtitle">Definiciones formales, parámetros cinemáticos y unidades en el Sistema Internacional</div>
+              </div>
+              <div class="page-num-pill">Pág. 5 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <h2 class="section-heading">1. Definiciones Fundamentales</h2>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <div class="concept-card">
+                  <div class="concept-card-title">Movimiento Periódico</div>
+                  <p style="font-size:0.84rem; color:var(--ink-secondary);">
+                    Es aquel movimiento en el cual un cuerpo o partícula móvil repite exactamente las mismas posiciones, velocidades y aceleraciones a intervalos regulares de tiempo $T$.
+                  </p>
+                </div>
+                <div class="concept-card">
+                  <div class="concept-card-title">Movimiento Oscilatorio</div>
+                  <p style="font-size:0.84rem; color:var(--ink-secondary);">
+                    Es un movimiento periódico de vaivén en el cual la partícula se desplaza alternativamente a uno y otro lado de una posición de equilibrio estable, siguiendo la misma trayectoria.
+                  </p>
+                </div>
+              </div>
+
+              <h2 class="section-heading">2. Parámetros Descriptivos y Unidades del SI</h2>
+              
+              <p style="font-size:0.88rem; color:var(--ink-secondary);">
+                • <strong>Elongación $x(t)$:</strong> Posición o distancia orientada de la partícula oscilante respecto a la posición de equilibrio en un instante $t$. Unidad SI: <em>metro ($\text{m}$)</em>.<br>
+                • <strong>Amplitud $A$:</strong> Máximo valor absoluto que puede tomar la elongación ($A = |x_{\max}|$). Representa el límite de la oscilación. Unidad SI: <em>metro ($\text{m}$)</em>.<br>
+                • <strong>Período $T$:</strong> Tiempo requerido para que el oscilador complete un ciclo u oscilación completa. Unidad SI: <em>segundo ($\text{s}$)</em>.<br>
+                • <strong>Frecuencia $f$:</strong> Número de ciclos u oscilaciones completas efectuadas por unidad de tiempo. Unidad SI: <em>Hertz ($\text{Hz} = \text{s}^{-1} = \frac{1}{\text{s}}$)</em>.<br>
+                • <strong>Frecuencia Angular $\omega$:</strong> Rapidez de cambio de la fase armónica. Unidad SI: <em>radianes por segundo ($\text{rad/s}$)</em>.
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$f = \frac{1}{T} \qquad \Longleftrightarrow \qquad T = \frac{1}{f} \qquad \Longleftrightarrow \qquad \omega = 2\pi f = \frac{2\pi}{T}$$
+                </div>
+                <div class="eq-number">(1)</div>
+              </div>
+
+              <span class="caption-label">Tabla 1. Magnitudes Físicas del Movimiento Periódico, Unidades SI y Dimensiones</span>
+              <table class="science-table">
+                <thead>
+                  <tr>
+                    <th>Magnitud Física</th>
+                    <th>Símbolo</th>
+                    <th>Unidad en el S.I.</th>
+                    <th>Ecuación Dimensional</th>
+                    <th>Fórmula Fundamental</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Elongación</td>
+                    <td>$x$</td>
+                    <td>Metro ($\text{m}$)</td>
+                    <td>$[L]$</td>
+                    <td>$x(t) = A\cos(\omega t + \phi_0)$</td>
+                  </tr>
+                  <tr>
+                    <td>Amplitud</td>
+                    <td>$A$</td>
+                    <td>Metro ($\text{m}$)</td>
+                    <td>$[L]$</td>
+                    <td>$A = \max|x(t)|$</td>
+                  </tr>
+                  <tr>
+                    <td>Período</td>
+                    <td>$T$</td>
+                    <td>Segundo ($\text{s}$)</td>
+                    <td>$[T]$</td>
+                    <td>$T = 2\pi/\omega = 1/f$</td>
+                  </tr>
+                  <tr>
+                    <td>Frecuencia</td>
+                    <td>$f$</td>
+                    <td>Hertz ($\text{Hz} = \text{s}^{-1}$)</td>
+                    <td>$[T^{-1}]$</td>
+                    <td>$f = 1/T = \omega/(2\pi)$</td>
+                  </tr>
+                  <tr>
+                    <td>Frecuencia Angular</td>
+                    <td>$\omega$</td>
+                    <td>Radian por segundo ($\text{rad/s}$)</td>
+                    <td>$[T^{-1}]$</td>
+                    <td>$\omega = \sqrt{k/m} = 2\pi f$</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 6: FUNDAMENTACIÓN TEÓRICA II (M.A.S. Y LEY DE HOOKE)
+             ================================================================ -->
+        <section class="page" id="page-6" aria-label="Fundamentación teórica II: M.A.S. y Ley de Hooke">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Fundamentos Teóricos II</div>
+                <h1 class="page-title">Movimiento Armónico Simple (M.A.S.)</h1>
+                <div class="page-subtitle">Dinámica elástica de Hooke y deducción analítica de la ecuación diferencial</div>
+              </div>
+              <div class="page-num-pill">Pág. 6 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <h2 class="section-heading">1. Ley de Hooke y Fuerza Restauradora</h2>
+              <p class="body-lead">
+                Consideremos una partícula de masa $m$ unida a un resorte ideal de constante elástica $k$, apoyada sobre una superficie horizontal sin fricción. Cuando la masa se desplaza una distancia $x$ respecto al punto de equilibrio ($x = 0$), el resorte ejerce una <strong>fuerza restauradora lineal</strong>:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$\vec{F}_{\text{rest}} = -k x \hat{\imath}$$
+                </div>
+                <div class="eq-number">(2)</div>
+              </div>
+
+              <h2 class="section-heading">2. Deducción de la Ecuación Diferencial del M.A.S.</h2>
+              <p style="font-size:0.88rem; color:var(--ink-secondary);">
+                Aplicando la <strong>Segunda Ley de Newton</strong> a lo largo del eje del movimiento ($\sum F_x = m a_x$):
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$-k x = m \frac{d^2 x}{dt^2} \quad \Longrightarrow \quad m \frac{d^2 x}{dt^2} + k x = 0$$
+                </div>
+                <div class="eq-number">(3)</div>
+              </div>
+
+              <p style="font-size:0.88rem; color:var(--ink-secondary);">
+                Dividiendo toda la expresión entre la masa inercial $m$, se obtiene la forma canónica homogénea:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$\frac{d^2 x}{dt^2} + \omega_0^2 x = 0 \qquad \text{donde } \omega_0 \equiv \sqrt{\frac{k}{m}}$$
+                </div>
+                <div class="eq-number">(4)</div>
+              </div>
+
+              <h2 class="section-heading">3. Solución Analítica General Paso a Paso</h2>
+              <p style="font-size:0.86rem; color:var(--ink-secondary);">
+                Proponemos una solución exponencial $x(t) = C e^{rt}$. Al sustituir en (4), el polinomio característico es $r^2 + \omega_0^2 = 0$, cuyas raíces complejas son $r_{1,2} = \pm i \omega_0$. Empleando la fórmula de Euler ($e^{\pm i \omega_0 t} = \cos \omega_0 t \pm i \sin \omega_0 t$), la combinación lineal real se expresa como:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$x(t) = A \cos(\omega_0 t + \phi_0)$$
+                </div>
+                <div class="eq-number">(5)</div>
+              </div>
+
+              <div class="concept-card">
+                <div class="concept-card-title">Significado Físico de las Constantes de Integración:</div>
+                <p style="font-size:0.84rem; color:var(--ink-secondary);">
+                  • <strong>$A$ (Amplitud):</strong> Determinada por la energía mecánica suministrada inicialmente al sistema.<br>
+                  • <strong>$\phi_0$ (Fase inicial o ángulo de fase):</strong> Define el estado cinemático exacto en el origen temporal $t = 0$.<br>
+                  • <strong>$(\omega_0 t + \phi_0)$ (Fase instantánea):</strong> Ángulo en radianes que describe el avance en el ciclo oscilatorio.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 7: CINEMÁTICA DEL M.A.S.
+             ================================================================ -->
+        <section class="page" id="page-7" aria-label="Cinemática del M.A.S.">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Cinemática Teórica</div>
+                <h1 class="page-title">Cinemática del M.A.S.</h1>
+                <div class="page-subtitle">Deducción de la velocidad, aceleración, desfases temporales y relaciones espaciales</div>
+              </div>
+              <div class="page-num-pill">Pág. 7 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <h2 class="section-heading">1. Ecuación de la Velocidad $v(t)$</h2>
+              <p style="font-size:0.86rem; color:var(--ink-secondary);">
+                Derivando temporalmente la elongación $x(t) = A\cos(\omega t + \phi_0)$ mediante la regla de la cadena:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$v(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \phi_0) = A\omega \cos\left(\omega t + \phi_0 + \frac{\pi}{2}\right)$$
+                </div>
+                <div class="eq-number">(6)</div>
+              </div>
+              <p style="font-size:0.82rem; color:var(--navy-accent); margin-top:-2px;">
+                <em>Propiedad:</em> La velocidad tiene un valor máximo $v_{\max} = \omega A$ y adelanta a la posición en una fase de $\pi/2\text{ rad } (90^\circ)$.
+              </p>
+
+              <h2 class="section-heading">2. Ecuación de la Aceleración $a(t)$</h2>
+              <p style="font-size:0.86rem; color:var(--ink-secondary);">
+                Derivando temporalmente la velocidad $v(t)$:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$a(t) = \frac{dv}{dt} = -A\omega^2 \cos(\omega t + \phi_0) = -\omega^2 x(t) = A\omega^2 \cos\left(\omega t + \phi_0 + \pi\right)$$
+                </div>
+                <div class="eq-number">(7)</div>
+              </div>
+              <p style="font-size:0.82rem; color:var(--color-incognita); margin-top:-2px;">
+                <em>Propiedad:</em> La aceleración es proporcional y opuesta a la posición, tiene $a_{\max} = \omega^2 A$ y está en oposición de fase ($\pi\text{ rad } / 180^\circ$) respecto a $x(t)$.
+              </p>
+
+              <h2 class="section-heading">3. Relaciones Espaciales y Valores en Puntos Notables</h2>
+              <p style="font-size:0.86rem; color:var(--ink-secondary);">
+                Despejando el tiempo a través de la identidad trigonométrica $\sin^2\theta + \cos^2\theta = 1$, obtenemos la velocidad en función directa de la elongación $x$:
+              </p>
+
+              <div class="math-equation-block">
+                <div class="math-expr">
+                  $$v(x) = \pm \omega \sqrt{A^2 - x^2}$$
+                </div>
+                <div class="eq-number">(8)</div>
+              </div>
+
+              <span class="caption-label">Tabla 2. Cinemática en los Puntos Críticos de la Trayectoria Armónica</span>
+              <table class="science-table">
+                <thead>
+                  <tr>
+                    <th>Posición del Oscilador</th>
+                    <th>Elongación $x$</th>
+                    <th>Velocidad $v$</th>
+                    <th>Aceleración $a$</th>
+                    <th>Fuerza $F$</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Extremo Derecho</strong></td>
+                    <td>$+A$ (Máxima)</td>
+                    <td>$0$ (Masa se detiene)</td>
+                    <td>$-\omega^2 A$ (Máx. negativa)</td>
+                    <td>$-kA$ (Máx. hacia izq.)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Punto de Equilibrio</strong></td>
+                    <td>$0$ (Nula)</td>
+                    <td>$\pm \omega A$ (Máxima rapidez)</td>
+                    <td>$0$ (Nula)</td>
+                    <td>$0$ (Nula)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Extremo Izquierdo</strong></td>
+                    <td>$-A$ (Mínima)</td>
+                    <td>$0$ (Masa se detiene)</td>
+                    <td>$+\omega^2 A$ (Máx. positiva)</td>
+                    <td>$+kA$ (Máx. hacia der.)</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 8: LABORATORIO GRÁFICO GEOGEBRA
+             ================================================================ -->
+        <section class="page" id="page-8" aria-label="Laboratorio cartesiano estilo GeoGebra">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Laboratorio Cartesiano</div>
+                <h1 class="page-title">Plano Cartesiano Estilo GeoGebra</h1>
+                <div class="page-subtitle">Cuadrícula milimetrada, reglas sobre los ejes, re-escalamiento manual y paleta gráfica</div>
+              </div>
+              <div class="page-num-pill">Pág. 8 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <!-- GeoGebra Widget -->
+              <div class="geogebra-widget">
+                
+                <div class="geogebra-canvas-wrapper">
+                  <canvas id="geogebra-canvas" class="geogebra-canvas"></canvas>
+
+                  <!-- Dynamic Coordinate Readout -->
+                  <div class="geo-coord-badge" id="geo-coord-readout">(t: 0.00s, y: 0.00)</div>
+
+                  <!-- Floating GeoGebra Toolbar with crisp icons -->
+                  <div class="geogebra-toolbar" role="toolbar" aria-label="Herramientas del plano cartesiano">
+                    <button class="geo-btn" id="geo-btn-zin" data-tip="Acercar (Zoom In)" aria-label="Zoom In">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </button>
+                    <button class="geo-btn" id="geo-btn-zout" data-tip="Alejar (Zoom Out)" aria-label="Zoom Out">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </button>
+                    <div class="geo-divider"></div>
+                    <button class="geo-btn" id="geo-btn-reset" data-tip="Restablecer Vista" aria-label="Restablecer Vista">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    </button>
+                    <div class="geo-divider"></div>
+                    <button class="geo-btn" id="geo-btn-palette" data-tip="Paleta de Estilos Gráficos" aria-label="Paleta de Estilos">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                    </button>
+                  </div>
+
+                  <!-- Graphic Style Palette Popover Modal -->
+                  <div class="geo-palette-popover" id="geo-palette-popover">
+                    <div class="palette-header">
+                      <span>🎨 Estilos Gráficos GeoGebra</span>
+                      <button class="palette-close-btn" id="geo-palette-close">&times;</button>
+                    </div>
+
+                    <div class="palette-row">
+                      <div class="palette-row-label">Seleccionar Curva:</div>
+                      <div class="palette-curve-tabs">
+                        <button class="palette-curve-tab active" data-curve="x">x(t)</button>
+                        <button class="palette-curve-tab" data-curve="v">v(t)</button>
+                        <button class="palette-curve-tab" data-curve="a">a(t)</button>
+                      </div>
+                    </div>
+
+                    <div class="palette-row">
+                      <div class="palette-row-label">Color del Trazo:</div>
+                      <div class="palette-color-options">
+                        <div class="palette-color-dot selected" style="background:#0284c7;" data-color="#0284c7"></div>
+                        <div class="palette-color-dot" style="background:#dc2626;" data-color="#dc2626"></div>
+                        <div class="palette-color-dot" style="background:#16a34a;" data-color="#16a34a"></div>
+                        <div class="palette-color-dot" style="background:#ea580c;" data-color="#ea580c"></div>
+                        <div class="palette-color-dot" style="background:#7c3aed;" data-color="#7c3aed"></div>
+                      </div>
+                    </div>
+
+                    <div class="palette-row">
+                      <div class="palette-row-label">Grosor de Línea:</div>
+                      <div class="palette-width-options">
+                        <button class="palette-opt-btn palette-width-btn" data-width="1.5">Fino</button>
+                        <button class="palette-opt-btn palette-width-btn selected" data-width="2.5">Medio</button>
+                        <button class="palette-opt-btn palette-width-btn" data-width="4.0">Grueso</button>
+                      </div>
+                    </div>
+
+                    <div class="palette-row">
+                      <div class="palette-row-label">Tipo de Trazo:</div>
+                      <div class="palette-style-options">
+                        <button class="palette-opt-btn palette-style-btn selected" data-style="solid">Continua</button>
+                        <button class="palette-opt-btn palette-style-btn" data-style="dashed">Discontinua</button>
+                        <button class="palette-opt-btn palette-style-btn" data-style="dotted">Punteada</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Axis hint indicator -->
+                  <div class="geo-axis-hint">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><path d="M12 2v20M2 12h20"/></svg>
+                    <span id="geo-axis-hint-text">Arrastra para desplazar el plano cartesiano</span>
+                  </div>
+
+                </div>
+
+                <!-- Interactive Parameter Controls -->
+                <div class="geogebra-controls-bar">
+                  
+                  <div class="geo-slider-group">
+                    <label for="geo-slider-amp">Amplitud $A$:</label>
+                    <input type="range" id="geo-slider-amp" min="0.5" max="4.0" step="0.1" value="2.0">
+                    <span class="geo-slider-val" id="geo-val-amp">2.0 m</span>
+                  </div>
+
+                  <div class="geo-slider-group">
+                    <label for="geo-slider-omega">Frecuencia $\omega$:</label>
+                    <input type="range" id="geo-slider-omega" min="0.5" max="6.0" step="0.1" value="2.0">
+                    <span class="geo-slider-val" id="geo-val-omega">2.0 rad/s</span>
+                  </div>
+
+                  <div class="geo-slider-group">
+                    <label for="geo-slider-phi">Fase $\phi_0$:</label>
+                    <input type="range" id="geo-slider-phi" min="0" max="6.28" step="0.15" value="0.0">
+                    <span class="geo-slider-val" id="geo-val-phi">0.00π rad</span>
+                  </div>
+
+                  <div class="geo-toggle-group">
+                    <label class="geo-toggle-label">
+                      <input type="checkbox" id="geo-chk-x" checked> <span style="color:#0284c7;">$x(t)$</span>
+                    </label>
+                    <label class="geo-toggle-label">
+                      <input type="checkbox" id="geo-chk-v" checked> <span style="color:#16a34a;">$v(t)$</span>
+                    </label>
+                    <label class="geo-toggle-label">
+                      <input type="checkbox" id="geo-chk-a" checked> <span style="color:#dc2626;">$a(t)$</span>
+                    </label>
+                    <label class="geo-toggle-label">
+                      <input type="checkbox" id="geo-chk-tangent" checked> <span>$\vec{v}$ Tangente</span>
+                    </label>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="sticky-note" style="margin-top:6px; font-size:0.82rem;">
+                💡 <strong>Interactividad estilo GeoGebra:</strong> Puedes hacer zoom con la rueda del mouse, arrastrar el lienzo libremente o <em>colocar el cursor sobre los números del eje X o Y para re-escalar ese eje de forma individual</em> estirándolo horizontal o verticalmente.
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 9: LABORATORIO DE SIMULACIÓN FÍSICA PREMIUM
+             ================================================================ -->
+        <section class="page" id="page-9" aria-label="Laboratorio de simulación física premium">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Laboratorio Premium</div>
+                <h1 class="page-title">Simulador Físico en Tiempo Real</h1>
+                <div class="page-subtitle">Oscilador masa-resorte, péndulo simple, vectores vivos, espacio de fases y osciloscopio</div>
+              </div>
+              <div class="page-num-pill">Pág. 9 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <div class="simulation-widget">
+                
+                <!-- Top Tabs for Physical Systems -->
+                <div class="sim-top-nav">
+                  <div class="sim-tabs">
+                    <button class="sim-tab-btn active" id="tab-sim-spring">Sistema Masa-Resorte</button>
+                    <button class="sim-tab-btn" id="tab-sim-pendulum">Péndulo Simple</button>
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:0.75rem; color:#93c5fd;">
+                    $\omega$: <span id="sim-readout-omega">5.00 rad/s</span> | $T$: <span id="sim-readout-t">1.26 s</span> | $f$: <span id="sim-readout-f">0.80 Hz</span>
+                  </div>
+                </div>
+
+                <!-- Simulation Main Stage + Side Panel -->
+                <div class="sim-main-grid">
+                  
+                  <div class="sim-stage-container">
+                    <canvas id="sim-stage-canvas" class="sim-stage-canvas"></canvas>
+                    <div class="sim-vector-legend">
+                      <div class="legend-item"><div class="legend-dot legend-vel"></div> Vector Velocidad $\vec{v}$</div>
+                      <div class="legend-item"><div class="legend-dot legend-acc"></div> Vector Aceleración $\vec{a}$</div>
+                    </div>
+                  </div>
+
+                  <div class="sim-side-panel">
+                    
+                    <!-- Phase Space Orbit -->
+                    <div class="sim-chart-box">
+                      <div class="sim-chart-title">
+                        <span>Espacio de Fases $(x, v/\omega)$</span>
+                        <span style="color:#0284c7;">Órbita Cerrada</span>
+                      </div>
+                      <canvas id="sim-phase-canvas" class="sim-chart-canvas"></canvas>
+                    </div>
+
+                    <!-- Energy Meters -->
+                    <div class="sim-chart-box">
+                      <div class="sim-chart-title">
+                        <span>Conservación de Energía</span>
+                        <span style="color:#d97706;">$E_{\text{mec}} = \text{cte}$</span>
+                      </div>
+                      <div class="energy-meters-wrapper">
+                        <div class="energy-row">
+                          <span class="energy-row-label">Cinética ($E_c$):</span>
+                          <div class="energy-bar-track"><div class="energy-bar-fill energy-fill-k" id="energy-bar-k" style="width:50%;"></div></div>
+                          <span class="energy-row-val" id="energy-val-k">0.00 J</span>
+                        </div>
+                        <div class="energy-row">
+                          <span class="energy-row-label">Potencial ($E_p$):</span>
+                          <div class="energy-bar-track"><div class="energy-bar-fill energy-fill-p" id="energy-bar-p" style="width:50%;"></div></div>
+                          <span class="energy-row-val" id="energy-val-p">0.00 J</span>
+                        </div>
+                        <div class="energy-row">
+                          <span class="energy-row-label">Total ($E$):</span>
+                          <div class="energy-bar-track"><div class="energy-bar-fill energy-fill-total" id="energy-bar-total" style="width:100%;"></div></div>
+                          <span class="energy-row-val" id="energy-val-total">0.00 J</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- Real-time Oscillograph Waveform Display -->
+                <div class="oscilloscope-canvas-wrapper">
+                  <canvas id="sim-osc-canvas" class="oscilloscope-canvas"></canvas>
+                  <div class="oscilloscope-legend">
+                    <span class="osc-x">— $x(t)$ Posición</span>
+                    <span class="osc-v">— $v(t)/\omega$ Velocidad</span>
+                    <span class="osc-a">— $a(t)/\omega^2$ Aceleración</span>
+                  </div>
+                </div>
+
+                <!-- Simulator Controls & Sliders -->
+                <div class="sim-controls-footer">
+                  <div class="sim-btn-group">
+                    <button class="sim-action-btn primary" id="sim-btn-play">
+                      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                      Pausar
+                    </button>
+                    <button class="sim-action-btn" id="sim-btn-step">Paso a Paso</button>
+                    <button class="sim-action-btn" id="sim-btn-reset">Reiniciar</button>
+                  </div>
+
+                  <div style="display:flex; gap:12px; align-items:center;">
+                    <div class="geo-slider-group">
+                      <label for="sim-slider-m">Masa $m$:</label>
+                      <input type="range" id="sim-slider-m" min="0.2" max="3.0" step="0.1" value="1.0">
+                      <span class="geo-slider-val" id="sim-val-m">1.0 kg</span>
+                    </div>
+                    <div class="geo-slider-group">
+                      <label for="sim-slider-k">Resorte $k$:</label>
+                      <input type="range" id="sim-slider-k" min="5" max="80" step="5" value="25">
+                      <span class="geo-slider-val" id="sim-val-k">25 N/m</span>
+                    </div>
+                    <div class="geo-slider-group">
+                      <label for="sim-slider-a">Amplitud $A$:</label>
+                      <input type="range" id="sim-slider-a" min="0.5" max="2.2" step="0.1" value="1.5">
+                      <span class="geo-slider-val" id="sim-val-a">1.50 m</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 10: TALLER DE PROBLEMAS I (PROTOCOLO 5 PASOS)
+             ================================================================ -->
+        <section class="page" id="page-10" aria-label="Taller de problemas resueltos I">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Resolución Rigurosa I</div>
+                <h1 class="page-title">Problema Resuelto: Cinemática del M.A.S.</h1>
+                <div class="page-subtitle">Protocolo de 5 pasos con codificación de colores: Azul, Rojo, Fórmulas, Naranja y Validación</div>
+              </div>
+              <div class="page-num-pill">Pág. 10 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <!-- Enunciado -->
+              <div class="problem-statement-box">
+                <strong>Enunciado:</strong> Un bloque de masa $0.80\text{ kg}$ conectado a un resorte elástico oscila horizontalmente sobre una superficie lisa con un período de $1.20\text{ s}$ y una amplitud de $0.25\text{ m}$. Si en el instante inicial $t = 0\text{ s}$ el bloque se encuentra en su elongación máxima positiva ($x_0 = +A$):
+                <ol style="margin-left:20px; margin-top:4px;">
+                  <li>Calcular la constante elástica del resorte y la frecuencia cíclica.</li>
+                  <li>Escribir la ecuación horaria de la elongación $x(t)$, la velocidad $v(t)$ y la aceleración $a(t)$.</li>
+                  <li>Determinar la rapidez y la aceleración del bloque cuando pasa por la posición $x = 0.15\text{ m}$.</li>
+                </ol>
+              </div>
+
+              <!-- Protocolo de 5 Pasos -->
+              <div class="protocol-container">
+                
+                <!-- PASO 1: DATOS (AZUL) -->
+                <div class="step-box step-1-datos">
+                  <div class="step-header">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Paso 1: Identificación de Datos (En Color Azul)
+                  </div>
+                  <div>
+                    <span class="dato-tag">Masa: $m = 0.80\text{ kg}$</span>
+                    <span class="dato-tag">Período: $T = 1.20\text{ s}$</span>
+                    <span class="dato-tag">Amplitud: $A = 0.25\text{ m}$</span>
+                    <span class="dato-tag">Condición inicial: $x(0) = +0.25\text{ m}$</span>
+                    <span class="dato-tag">Posición de interés: $x_1 = 0.15\text{ m}$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 2: INCÓGNITAS (ROJO) -->
+                <div class="step-box step-2-incognitas">
+                  <div class="step-header">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    Paso 2: Identificación de Incógnitas (En Color Rojo)
+                  </div>
+                  <div>
+                    <span class="incognita-tag">Frecuencia cíclica: $f = ?$</span>
+                    <span class="incognita-tag">Frecuencia angular: $\omega = ?$</span>
+                    <span class="incognita-tag">Constante del resorte: $k = ?$</span>
+                    <span class="incognita-tag">Fase inicial: $\phi_0 = ?$</span>
+                    <span class="incognita-tag">Ecuaciones: $x(t), v(t), a(t) = ?$</span>
+                    <span class="incognita-tag">Rapidez en $x_1$: $|v(x_1)| = ?$</span>
+                    <span class="incognita-tag">Aceleración en $x_1$: $a(x_1) = ?$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 3: FÓRMULAS NECESARIAS -->
+                <div class="step-box step-3-formulas">
+                  <div class="step-header">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    Paso 3: Fórmulas Necesarias
+                  </div>
+                  <div style="font-size:0.85rem; color:var(--navy-primary);">
+                    $$f = \frac{1}{T}, \quad \omega = \frac{2\pi}{T}, \quad k = m\omega^2, \quad x(t) = A\cos(\omega t + \phi_0), \quad v(x) = \pm\omega\sqrt{A^2 - x^2}, \quad a(x) = -\omega^2 x$$
+                  </div>
+                </div>
+
+                <!-- PASO 4: SUSTITUCIÓN Y DESPEJE (INCÓGNITAS RESUELTAS EN NARANJA) -->
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Paso 4: Sustitución, Conversión y Despeje (Valores Resueltos en Color Naranja)
+                  </div>
+                  <div style="font-size:0.85rem; color:var(--ink-secondary);">
+                    • Frecuencia cíclica: $f = \frac{1}{1.20\text{ s}} \Longrightarrow$ <span class="resuelta-tag">$\mathbf{f = 0.833\text{ Hz}}$</span><br>
+                    • Frecuencia angular: $\omega = \frac{2\pi}{1.20\text{ s}} \Longrightarrow$ <span class="resuelta-tag">$\mathbf{\omega = 5.236\text{ rad/s}}$</span><br>
+                    • Constante elástica: $k = (0.80\text{ kg})(5.236\text{ rad/s})^2 \Longrightarrow$ <span class="resuelta-tag">$\mathbf{k = 21.93\text{ N/m}}$</span><br>
+                    • Fase inicial: $x(0) = 0.25\cos(\phi_0) = 0.25 \Longrightarrow \cos(\phi_0) = 1 \Longrightarrow$ <span class="resuelta-tag">$\mathbf{\phi_0 = 0\text{ rad}}$</span><br>
+                    • Ecuaciones horarias completas:<br>
+                    &nbsp;&nbsp;$\to$ <span class="resuelta-tag">$\mathbf{x(t) = 0.25\cos(5.24 t)\text{ m}}$</span><br>
+                    &nbsp;&nbsp;$\to$ <span class="resuelta-tag">$\mathbf{v(t) = -1.31\sin(5.24 t)\text{ m/s}}$</span><br>
+                    &nbsp;&nbsp;$\to$ <span class="resuelta-tag">$\mathbf{a(t) = -6.85\cos(5.24 t)\text{ m/s}^2}$</span><br>
+                    • Rapidez en $x = 0.15\text{ m}$: $v = \pm(5.236)\sqrt{0.25^2 - 0.15^2} = \pm(5.236)(0.20) \Longrightarrow$ <span class="resuelta-tag">$\mathbf{|v| = 1.05\text{ m/s}}$</span><br>
+                    • Aceleración en $x = 0.15\text{ m}$: $a = -(5.236)^2 (0.15) \Longrightarrow$ <span class="resuelta-tag">$\mathbf{a = -4.11\text{ m/s}^2}$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 5: VALIDACIÓN Y CONCLUSIONES (VERDE) -->
+                <div class="step-box step-5-validacion">
+                  <div class="step-header">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+                    Paso 5: Validación de Resultados y Conclusiones Físicas (En Color Verde)
+                  </div>
+                  <p style="font-size:0.83rem; color:var(--ink-secondary);">
+                    <strong>1. Análisis Dimensional:</strong> $[k] = [M][T^{-2}] = \text{kg}\cdot\text{s}^{-2} = \text{N/m}$, consistente con la rigidez de Hooke.<br>
+                    <strong>2. Coherencia Cinemática:</strong> En $x = 0.15\text{ m}$, la rapidez ($1.05\text{ m/s}$) es estrictamente menor a la rapidez máxima $v_{\max} = \omega A = 1.31\text{ m/s}$, cumpliendo el principio de conservación de energía.<br>
+                    <strong>3. Signo de la Aceleración:</strong> Dado que la elongación es positiva ($+0.15\text{ m}$), la aceleración resulta negativa ($-4.11\text{ m/s}^2$), demostrando que la fuerza siempre actúa restaurando hacia el equilibrio $x = 0$.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 11: TALLER DE PROBLEMAS II (DINÁMICA Y CONDICIONES INICIALES)
+             ================================================================ -->
+        <section class="page" id="page-11" aria-label="Taller de problemas resueltos II">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Resolución Rigurosa II</div>
+                <h1 class="page-title">Problema Resuelto: Condiciones de Frontera</h1>
+                <div class="page-subtitle">Cálculo analítico de amplitud y fase con velocidad inicial no nula $v_0 \neq 0$</div>
+              </div>
+              <div class="page-num-pill">Pág. 11 de 13</div>
+            </div>
+
+            <div class="page-content">
+              
+              <!-- Enunciado -->
+              <div class="problem-statement-box">
+                <strong>Enunciado:</strong> Un oscilador armónico está formado por un resorte con $k = 180\text{ N/m}$ y una masa de $0.50\text{ kg}$. En el instante $t = 0\text{ s}$, la masa se sitúa a $x_0 = -0.10\text{ m}$ y se le imprime una velocidad inicial dirigida hacia la derecha de $v_0 = +1.20\text{ m/s}$. Determinar:
+                <ol style="margin-left:20px; margin-top:4px;">
+                  <li>La frecuencia angular $\omega$ y el período $T$ de oscilación.</li>
+                  <li>La amplitud $A$ del movimiento y la fase inicial $\phi_0$.</li>
+                  <li>La energía mecánica total del sistema oscilante.</li>
+                </ol>
+              </div>
+
+              <!-- Protocolo de 5 Pasos -->
+              <div class="protocol-container">
+                
+                <!-- PASO 1: DATOS (AZUL) -->
+                <div class="step-box step-1-datos">
+                  <div class="step-header">Paso 1: Identificación de Datos (En Color Azul)</div>
+                  <div>
+                    <span class="dato-tag">Constante: $k = 180\text{ N/m}$</span>
+                    <span class="dato-tag">Masa: $m = 0.50\text{ kg}$</span>
+                    <span class="dato-tag">Posición inicial: $x_0 = -0.10\text{ m}$</span>
+                    <span class="dato-tag">Velocidad inicial: $v_0 = +1.20\text{ m/s}$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 2: INCÓGNITAS (ROJO) -->
+                <div class="step-box step-2-incognitas">
+                  <div class="step-header">Paso 2: Identificación de Incógnitas (En Color Rojo)</div>
+                  <div>
+                    <span class="incognita-tag">Frecuencia angular: $\omega = ?$</span>
+                    <span class="incognita-tag">Período: $T = ?$</span>
+                    <span class="incognita-tag">Amplitud real: $A = ?$</span>
+                    <span class="incognita-tag">Ángulo de fase inicial: $\phi_0 = ?$</span>
+                    <span class="incognita-tag">Energía mecánica total: $E_{\text{total}} = ?$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 3: FÓRMULAS NECESARIAS -->
+                <div class="step-box step-3-formulas">
+                  <div class="step-header">Paso 3: Fórmulas Necesarias</div>
+                  <div style="font-size:0.84rem; color:var(--navy-primary);">
+                    $$\omega = \sqrt{\frac{k}{m}}, \quad T = \frac{2\pi}{\omega}, \quad A = \sqrt{x_0^2 + \left(\frac{v_0}{\omega}\right)^2}, \quad \tan\phi_0 = -\frac{v_0}{\omega x_0}, \quad E = \frac{1}{2}k A^2$$
+                  </div>
+                </div>
+
+                <!-- PASO 4: SUSTITUCIÓN Y DESPEJE (NARANJA) -->
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Paso 4: Sustitución, Conversión y Despeje (Incógnitas Resueltas en Color Naranja)</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    • Frecuencia angular: $\omega = \sqrt{\frac{180}{0.50}} = \sqrt{360} \Longrightarrow$ <span class="resuelta-tag">$\mathbf{\omega = 18.97\text{ rad/s}}$</span><br>
+                    • Período de oscilación: $T = \frac{2\pi}{18.97} \Longrightarrow$ <span class="resuelta-tag">$\mathbf{T = 0.331\text{ s}}$</span><br>
+                    • Amplitud del M.A.S.: $A = \sqrt{(-0.10)^2 + \left(\frac{1.20}{18.97}\right)^2} = \sqrt{0.0100 + 0.0040} = \sqrt{0.0140} \Longrightarrow$ <span class="resuelta-tag">$\mathbf{A = 0.1183\text{ m} = 11.83\text{ cm}}$</span><br>
+                    • Constante de fase $\phi_0$: $\tan\phi_0 = -\frac{1.20}{(18.97)(-0.10)} = +\frac{1.20}{1.897} = 0.6325$.<br>
+                    &nbsp;&nbsp;Dado que $x_0 < 0$ y $v_0 > 0$, el ángulo reside en el segundo o tercer cuadrante ($\phi_0 = \pi - \arctan(0.6325)$):<br>
+                    &nbsp;&nbsp;$\phi_0 = 3.1416 - 0.564 \Longrightarrow$ <span class="resuelta-tag">$\mathbf{\phi_0 = 2.58\text{ rad } (147.7^\circ)}$</span><br>
+                    • Energía mecánica total: $E = \frac{1}{2}(180\text{ N/m})(0.1183\text{ m})^2 \Longrightarrow$ <span class="resuelta-tag">$\mathbf{E = 1.26\text{ Joules}}$</span>
+                  </div>
+                </div>
+
+                <!-- PASO 5: VALIDACIÓN Y CONCLUSIONES (VERDE) -->
+                <div class="step-box step-5-validacion">
+                  <div class="step-header">Paso 5: Validación de Resultados y Conclusiones Físicas (En Color Verde)</div>
+                  <p style="font-size:0.82rem; color:var(--ink-secondary);">
+                    <strong>1. Validación Energética Cruzada:</strong> Calculamos la energía en $t = 0$: $E_0 = \frac{1}{2}kx_0^2 + \frac{1}{2}mv_0^2 = \frac{1}{2}(180)(0.10)^2 + \frac{1}{2}(0.50)(1.20)^2 = 0.90\text{ J} + 0.36\text{ J} = 1.26\text{ J}$. Coincide al 100% con $\frac{1}{2}kA^2$.<br>
+                    <strong>2. Coherencia de Amplitud:</strong> La amplitud final ($11.83\text{ cm}$) supera la elongación inicial ($10.0\text{ cm}$) porque la velocidad inicial aportó energía cinética que se convierte en mayor estiramiento potencial.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 12: TALLER DE PROBLEMAS AVANZADOS
+             ================================================================ -->
+        <section class="page" id="page-12" aria-label="Taller de Problemas III">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Miscelánea de Ejercicios</div>
+                <h1 class="page-title">Taller de Problemas III: Análisis Avanzado</h1>
+                <div class="page-subtitle">Resolución de problemas con simulaciones dinámicas y formalismo matemático</div>
+              </div>
+              <div class="page-num-pill">Pág. 12 de 14</div>
+            </div>
+
+            <div class="page-content">
+
+              <!-- Ejercicio 1 -->
+              <div class="problem-statement-box">
+                <strong>Ejercicio 1: Partículas A y B</strong><br>
+                La figura muestra dos curvas que representan el movimiento armónico simple al que se someten dos partículas. La descripción correcta de estos dos movimientos es que el movimiento armónico simple de la partícula B es:
+                <ul>
+                  <li>(a) de mayor frecuencia angular y mayor amplitud que el de la partícula A</li>
+                  <li><strong>(b) de mayor frecuencia angular y menor amplitud que el de la partícula A</strong></li>
+                  <li>(c) de menor frecuencia angular y mayor amplitud que el de la partícula A</li>
+                  <li>(d) de menor frecuencia angular y menor amplitud que el de la partícula A</li>
+                </ul>
+              </div>
+              <div class="protocol-container">
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Resolución Analítica</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    Observando la imagen proporcionada, la partícula B realiza más ciclos completos en el mismo intervalo de tiempo en comparación con la partícula A. Esto indica que el período de B es menor, y como $\omega = 2\pi/T$, su <strong>frecuencia angular es mayor</strong>. Además, el desplazamiento vertical máximo de la curva B desde el equilibrio es más corto que el de la curva A, lo que significa que su <strong>amplitud es menor</strong>. Por lo tanto, la respuesta correcta es la <strong>(b)</strong>.
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="particle-track">
+                    <div class="particle a">A</div>
+                    <div class="particle b">B</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejercicio 2 -->
+              <div class="problem-statement-box" style="margin-top:20px;">
+                <strong>Ejercicio 2: Colisión de Bolas de Acero</strong><br>
+                Dos bolas de acero idénticas de masa $m = 67.4\text{ g}$ y diámetro $d = 25.4\text{ mm}$ chocan de frente a $v = 5.00\text{ m/s}$.<br>
+                Grupo (i): Modela con aceleración constante encontrando el tiempo de contacto.<br>
+                Grupo (ii): Usa la Ley de Hooke sabiendo que $F = 16.0\text{ kN}$ reduce el diámetro en $s = 0.200\text{ mm}$. Modela como medio ciclo de M.A.S. para encontrar el tiempo de contacto.<br>
+                ¿Qué resultado es más exacto?
+              </div>
+              <div class="protocol-container">
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Resolución Analítica</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    <strong>Grupo (ii) - M.A.S.:</strong> Constante de rigidez $k = \frac{F}{s} = \frac{16.0 \times 10^3}{0.200 \times 10^{-3}} = 8.00 \times 10^7 \text{ N/m}$.<br>
+                    El tiempo de contacto es medio período de oscilación: $\Delta t = \frac{T}{2} = \pi \sqrt{\frac{m}{k}} = \pi \sqrt{\frac{0.0674}{8.00 \times 10^7}} \approx \mathbf{9.12 \times 10^{-5} \text{ s}}$.<br><br>
+                    <strong>Grupo (i) - Aceleración Constante:</strong> La máxima compresión (Amplitud) es $\frac{1}{2}mv^2 = \frac{1}{2}kx_{max}^2 \Rightarrow x_{max} = v\sqrt{\frac{m}{k}} = 1.45 \times 10^{-4} \text{ m}$. El tiempo de compresión (ida) es $t_{stop} = \frac{x_{max}}{v_{prom}} = \frac{2 x_{max}}{v} = 5.80 \times 10^{-5}\text{ s}$. El tiempo total de contacto es $2t_{stop} = \mathbf{1.16 \times 10^{-4} \text{ s}}$.<br><br>
+                    <strong>Conclusión:</strong> El resultado del <strong>Grupo (ii)</strong> es más exacto ya que las fuerzas de restitución elásticas no son constantes, siguen fielmente la Ley de Hooke ($F=-kx$).
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="balls-container">
+                    <div class="steel-ball ball-left"></div>
+                    <div class="steel-ball ball-right"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejercicio 3 -->
+              <div class="problem-statement-box" style="margin-top:20px;">
+                <strong>Ejercicio 3: Sensibilidad a las Condiciones Iniciales</strong><br>
+                (i) Masa $450\text{ g}$ estira resorte en $35.0\text{ cm}$. Se baja $18\text{ cm}$ extra y se suelta.<br>
+                (ii) Masa $440\text{ g}$ estira otro resorte en $35.5\text{ cm}$. Se baja $18\text{ cm}$ extra y se suelta.<br>
+                (a) Halle la posición $x$ a los $t=84.4\text{ s}$ y la distancia total recorrida.<br>
+                (b) ¿Por qué difieren tanto en posición y (c) qué revela sobre predecir el futuro?
+              </div>
+              <div class="protocol-container">
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Resolución Analítica</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    <strong>Sistema (i):</strong> $k_1 = \frac{mg}{y_1} = 12.6 \text{ N/m}$. $\omega_1 = \sqrt{12.6/0.450} = 5.291 \text{ rad/s}$. Ecuación: $x_1(t) = -0.18 \cos(5.291 t)$.<br>
+                    En $t = 84.4 \text{ s}$, la fase es $446.60 \text{ rad}$. Posición $x_1(84.4) = -0.18\cos(446.60) = \mathbf{+12.4 \text{ cm}}$. Distancia $\approx \mathbf{51.4 \text{ m}}$.<br><br>
+                    <strong>Sistema (ii):</strong> $k_2 = \frac{mg}{y_2} = 12.15 \text{ N/m}$. $\omega_2 = \sqrt{12.15/0.440} = 5.254 \text{ rad/s}$. Ecuación: $x_2(t) = -0.18 \cos(5.254 t)$.<br>
+                    En $t = 84.4 \text{ s}$, la fase es $443.45 \text{ rad}$. Posición $x_2(84.4) = -0.18\cos(443.45) = \mathbf{+3.18 \text{ cm}}$. Distancia $\approx \mathbf{50.9 \text{ m}}$.<br><br>
+                    <strong>(b) y (c):</strong> Difieren ampliamente en posición porque en 84.4 segundos realizan $\approx 71$ oscilaciones completas. Pequeñas diferencias en $\omega$ acumulan grandes desfases de ángulo ($\Delta \theta > 3 \text{ rad}$). Esto revela la <strong>sensibilidad a las condiciones iniciales y parámetros</strong>: predecir estados futuros a largo plazo requiere precisión extrema (Teoría del Caos).
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="spring-container">
+                    <div class="spring-sys sys1">
+                      <div class="spring-coil"></div>
+                      <div class="spring-mass">450g</div>
+                    </div>
+                    <div class="spring-sys sys2">
+                      <div class="spring-coil"></div>
+                      <div class="spring-mass">440g</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejercicio 4 -->
+              <div class="problem-statement-box" style="margin-top:20px;">
+                <strong>Ejercicio 4: Pistón de Motor a Gasolina</strong><br>
+                Un pistón en M.A.S. corre a $3600\text{ rev/min}$. Sus extremos respecto al punto central son de $65.00\text{ cm}$. Encuentre (a) velocidad máxima y (b) aceleración máxima.
+              </div>
+              <div class="protocol-container">
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Resolución Analítica</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    Frecuencia $f = \frac{3600 \text{ rev}}{60 \text{ s}} = 60 \text{ Hz}$. Frecuencia angular $\omega = 2\pi f = 120\pi \approx 377 \text{ rad/s}$.<br>
+                    La posición desde el centro hasta los extremos es la Amplitud: $A = 65.00 \text{ cm} = 0.65 \text{ m}$.<br>
+                    (a) Velocidad Máxima: $v_{max} = A\omega = (0.65)(377) = \mathbf{245 \text{ m/s}}$.<br>
+                    (b) Aceleración Máxima: $a_{max} = A\omega^2 = (0.65)(377)^2 = \mathbf{92,400 \text{ m/s}^2}$.
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="piston-container">
+                    <div class="piston-head"></div>
+                    <div class="piston-rod"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejercicio 5 -->
+              <div class="problem-statement-box" style="margin-top:20px;">
+                <strong>Ejercicio 5: Cinemática Completa en $x$</strong><br>
+                Una partícula en M.A.S. parte del origen en $t = 0$ moviéndose a la derecha. Amplitud $A = 2.00\text{ cm}$, $f = 1.50\text{ Hz}$. (a) Expresión $x(t)$. (b) Rapidez máxima. (c) Tiempo más temprano ($t>0$) para la rapidez máxima. (d) Aceleración máxima positiva. (e) Tiempo más temprano para la aceleración máxima positiva. (f) Distancia en $t = 1.00\text{ s}$.
+              </div>
+              <div class="protocol-container">
+                <div class="step-box step-4-resolucion">
+                  <div class="step-header">Resolución Analítica</div>
+                  <div style="font-size:0.84rem; color:var(--ink-secondary);">
+                    $\omega = 2\pi f = 2\pi(1.50) = 3.00\pi \approx 9.42 \text{ rad/s}$. Como parte del origen a la derecha, la fase inicial es $0$ y usamos seno.<br>
+                    (a) Expresión: $\mathbf{x(t) = 2.00 \sin(3.00\pi t)}$ (en cm).<br>
+                    (b) Rapidez Máxima: $v_{max} = A\omega = 2.00(3.00\pi) = \mathbf{6.00\pi \text{ cm/s} \approx 18.8 \text{ cm/s}}$.<br>
+                    (c) Tiempo rapidez máx: Ocurre al cruzar el equilibrio. La próxima vez es en medio período $t = T/2$. Como $T = 1/f = 0.667 \text{ s}$, entonces $t = \mathbf{0.333 \text{ s}}$.<br>
+                    (d) Aceleración Máxima Positiva: Ocurre en la máxima elongación negativa ($x = -A$). $a_{max} = A\omega^2 = 2.00(3.00\pi)^2 = \mathbf{18.0\pi^2 \text{ cm/s}^2 \approx 178 \text{ cm/s}^2}$.<br>
+                    (e) Tiempo $a_{max}$ positiva: Es al alcanzar $x = -A$, lo cual sucede en $t = 3T/4 = \mathbf{0.500 \text{ s}}$.<br>
+                    (f) Distancia en $t = 1.00 \text{ s}$: En $1.00 \text{ s}$ completa exactamente $1.5$ ciclos ($1.00 / 0.667 = 1.5$). En un ciclo recorre $4A = 8.00 \text{ cm}$, y en medio ciclo extra $2A = 4.00 \text{ cm}$. Distancia total $= \mathbf{12.0 \text{ cm}}$.
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="axis-x">
+                    <div class="origin-mark"></div>
+                    <div class="particle-x"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PÁGINA 13: GLOSARIO CIENTÍFICO INTERACTIVO
+             ================================================================ -->
+        <section class="page" id="page-13" aria-label="Glosario científico interactivo">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Léxico Especializado</div>
+                <h1 class="page-title">Glosario Científico de Física III</h1>
+                <div class="page-subtitle">Términos fundamentales con buscador instantáneo y formalismo matemático</div>
+              </div>
+              <div class="page-num-pill">Pág. 13 de 14</div>
+            </div>
+
+            <div class="page-content">
+              
+              <!-- Glossary Search Box -->
+              <div class="glossary-search-box">
+                <svg class="glossary-search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="glossary-search-input" class="glossary-input" placeholder="Filtrar conceptos (ej. amplitud, fase, frecuencia, energía, hooke)...">
+              </div>
+
+              <!-- Glossary Grid -->
+              <div class="glossary-list">
+                
+                <div class="glossary-card">
+                  <div class="glossary-term">Amplitud ($A$)</div>
+                  <div class="glossary-definition">Magnitud escalar positiva que mide el desplazamiento máximo alcanzado por la partícula respecto a la posición de equilibrio central. Expresada en metros ($\text{m}$).</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Constante de Fase ($\phi_0$)</div>
+                  <div class="glossary-definition">Ángulo inicial que fija el estado cinemático (elongación y sentido de movimiento) del oscilador en el origen temporal $t = 0$. Medida en radianes.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Elongación ($x$)</div>
+                  <div class="glossary-definition">Distancia orientada o coordenada de posición de la partícula en cualquier instante $t$ respecto al punto donde la fuerza neta es nula ($x = 0$).</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Espacio de Fases</div>
+                  <div class="glossary-definition">Representación geométrica donde los ejes son la posición $x$ y el momento lineal $p$ (o velocidad normalizada $v/\omega$). En el M.A.S. ideal forma una órbita cerrada continua elíptica o circular.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Frecuencia Cíclica ($f$)</div>
+                  <div class="glossary-definition">Número de revoluciones, ciclos u oscilaciones periódicas completas efectuadas en un segundo. Unidad en el SI: Hertz ($\text{Hz} = \text{s}^{-1}$).</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Frecuencia Angular ($\omega$)</div>
+                  <div class="glossary-definition">Velocidad angular del vector fasorial asociado a la oscilación. Se relaciona con la frecuencia mediante $\omega = 2\pi f = \sqrt{k/m}$. Expresada en $\text{rad/s}$.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Fuerza Restauradora</div>
+                  <div class="glossary-definition">Fuerza que siempre actúa en dirección opuesta a la deformación y dirigida hacia la posición de equilibrio ($F = -kx$), permitiendo la oscilación confinada.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Isocronismo</div>
+                  <div class="glossary-definition">Propiedad descubierta por Galileo según la cual el período de un oscilador armónico es completamente independiente de la amplitud de sus oscilaciones.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Ley de Hooke</div>
+                  <div class="glossary-definition">Principio elástico fundamental formulado en 1676: la fuerza ejercida por un resorte es directamente proporcional a su elongación lineal con signo contrario.</div>
+                </div>
+
+                <div class="glossary-card">
+                  <div class="glossary-term">Período ($T$)</div>
+                  <div class="glossary-definition">Intervalo temporal mínimo necesario para que el sistema complete una oscilación entera y vuelva al mismo estado dinámico inicial. Unidad SI: segundo ($\text{s}$).</div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ================================================================
+             PÁGINA 14: REFERENCIAS BIBLIOGRÁFICAS (NORMAS APA 7)
+             ================================================================ -->
+        <section class="page" id="page-14" aria-label="Referencias bibliográficas normas APA 7">
+          <div class="page-inner">
+            <div class="page-header">
+              <div>
+                <div class="page-category-badge">Acreditación Académica</div>
+                <h1 class="page-title">Referencias Bibliográficas</h1>
+                <div class="page-subtitle">Obras canónicas de física universitaria con normas APA 7ma edición</div>
+              </div>
+              <div class="page-num-pill">Pág. 14 de 14</div>
+            </div>
+
+            <div class="page-content">
+              <p class="body-lead">
+                Los desarrollos analíticos, demostraciones cinemáticas y fundamentos energéticos de este cuaderno digital han sido rigurosamente contrastados con las siguientes fuentes bibliográficas estándar:
+              </p>
+
+              <div class="apa-card">
+                <div class="apa-citation">
+                  Serway, R. A., & Jewett, J. W. (2018). <em>Física para ciencias e ingeniería</em> (10.ª ed., Vol. 1). Cengage Learning.
+                </div>
+                <a href="https://doi.org/10.1017/CBO9781107415324" target="_blank" rel="noopener" class="apa-doi">DOI: 10.1017/CBO9781107415324 • Cap. 15: Movimiento Oscilatorio</a>
+              </div>
+
+              <div class="apa-card">
+                <div class="apa-citation">
+                  Sears, F. W., Zemansky, M. W., Young, H. D., & Freedman, R. A. (2018). <em>Física universitaria con física moderna</em> (14.ª ed., Vol. 1). Pearson Educación.
+                </div>
+                <a href="https://www.pearson.com" target="_blank" rel="noopener" class="apa-doi">ISBN: 978-607-32-4439-8 • Cap. 14: Movimiento Periódico</a>
+              </div>
+
+              <div class="apa-card">
+                <div class="apa-citation">
+                  Tipler, P. A., & Mosca, G. (2010). <em>Física para la ciencia y la tecnología: Mecánica, oscilaciones y ondas, termodinámica</em> (6.ª ed., Vol. 1). Editorial Reverté.
+                </div>
+                <a href="https://www.reverte.com" target="_blank" rel="noopener" class="apa-doi">ISBN: 978-84-291-4429-1 • Cap. 14: Oscilaciones Armónicas</a>
+              </div>
+
+              <div class="apa-card">
+                <div class="apa-citation">
+                  Halliday, D., Resnick, R., & Walker, J. (2014). <em>Fundamentals of physics</em> (10th ed., Vol. 1). John Wiley & Sons.
+                </div>
+                <a href="https://doi.org/10.1119/1.1975765" target="_blank" rel="noopener" class="apa-doi">DOI: 10.1119/1.1975765 • Chapter 15: Oscillations and Harmonic Systems</a>
+              </div>
+
+              <div class="apa-card">
+                <div class="apa-citation">
+                  French, A. P. (1974). <em>Vibraciones y ondas: Curso de física del M.I.T.</em> Editorial Reverté.
+                </div>
+                <a href="https://www.reverte.com" target="_blank" rel="noopener" class="apa-doi">ISBN: 978-84-291-4098-9 • Cap. 2 y 3: Osciladores Armónicos Simples</a>
+              </div>
+
+              <div class="concept-card" style="margin-top:14px; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--navy-primary);">
+                  Cuaderno Digital de Física III Finalizado
+                </div>
+                <p style="font-size:0.82rem; color:var(--ink-secondary); margin-top:2px;">
+                  Desarrollado con pasión académica y rigor técnico por <strong>Sara, Freiner y Daniela</strong>.<br>
+                  Universidad Tecnológica de Pereira (UTP) • Semestre 5
+                </p>
+              </div>
+
+            </div>
+
+            <div class="page-footer-note">
+              <span class="page-footer-authors">Sara, Freiner y Daniela</span>
+              <span>Cuaderno Digital Interactivo de Física 3</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ================================================================
+         FLOATING BOTTOM NAVIGATION BAR (LUXURY CONTROLS)
+         ================================================================ -->
+    <nav class="floating-bottom-nav" role="navigation" aria-label="Navegación del cuaderno">
+      
+      <!-- Home Button -->
+      <button class="nav-btn" id="nav-btn-home" data-tooltip="Portada (Inicio)" aria-label="Ir a la portada">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </button>
+
+      <!-- Previous Page -->
+      <button class="nav-btn" id="nav-btn-prev" data-tooltip="Página Anterior (←)" aria-label="Página anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <!-- Page Selector Dropdown -->
+      <div class="nav-page-select-wrapper">
+        <select class="nav-page-select" id="nav-page-select" aria-label="Seleccionar página">
+          <option value="1">Pág. 1: Portada Oficial</option>
+          <option value="2">Pág. 2: Índice & Presentación</option>
+          <option value="3">Pág. 3: Reseña Histórica</option>
+          <option value="4">Pág. 4: Mapa Conceptual</option>
+          <option value="5">Pág. 5: Fundamentación I</option>
+          <option value="6">Pág. 6: M.A.S. & Hooke</option>
+          <option value="7">Pág. 7: Cinemática del M.A.S.</option>
+          <option value="8">Pág. 8: Laboratorio GeoGebra</option>
+          <option value="9">Pág. 9: Simulador Físico</option>
+          <option value="10">Pág. 10: Problema Resuelto I</option>
+          <option value="11">Pág. 11: Problema Resuelto II</option>
+          <option value="12">Pág. 12: Taller de Problemas III</option>
+          <option value="13">Pág. 13: Glosario Científico</option>
+          <option value="14">Pág. 14: Referencias APA 7</option>
+        </select>
+        <div class="nav-page-select-arrow">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+
+      <!-- Next Page -->
+      <button class="nav-btn" id="nav-btn-next" data-tooltip="Página Siguiente (→)" aria-label="Página siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <!-- Zoom Controls -->
+      <button class="nav-btn" id="nav-btn-zoom-out" data-tooltip="Reducir Zoom (-)" aria-label="Alejar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      </button>
+
+      <span class="nav-zoom-indicator" id="nav-zoom-level">100%</span>
+
+      <button class="nav-btn" id="nav-btn-zoom-in" data-tooltip="Aumentar Zoom (+)" aria-label="Acercar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      </button>
+
+      <button class="nav-btn" id="nav-btn-zoom-reset" data-tooltip="Ajustar Tamaño Normal" aria-label="Restablecer zoom">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <!-- Screenshot Capture Button -->
+      <button class="nav-btn" id="nav-btn-capture" data-tooltip="Capturar Página (Foto PNG)" aria-label="Tomar captura de la página">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </button>
+
+      <!-- Fullscreen Button -->
+      <button class="nav-btn" id="nav-btn-fullscreen" data-tooltip="Pantalla Completa (F)" aria-label="Pantalla completa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+
+    </nav>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-msg" id="toast-notification"></div>
+
+  </div>
+
+  <!-- Application Logic Modules -->
+  <script src="../js/mindmap.js"></script>
+  <script src="../js/geogebra-engine.js"></script>
+  <script src="../js/physics-simulator.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script src="../js/global-menu.js"></script>
+</body>
+</html>

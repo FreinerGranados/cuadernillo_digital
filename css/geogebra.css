@@ -1,0 +1,370 @@
+/* ==========================================================================
+   GEOGEBRA CARTESIAN PLANES & GRAPHIC STYLES
+   Cuadrícula milimetrada, marcas, reglas, barra de herramientas y paleta
+   ========================================================================== */
+
+.geogebra-widget {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(15, 39, 68, 0.25);
+  box-shadow: 0 4px 18px rgba(15, 39, 68, 0.08);
+  overflow: hidden;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.geogebra-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #ffffff;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.geogebra-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.geogebra-canvas.grabbing {
+  cursor: grabbing !important;
+}
+
+.geogebra-canvas.axis-x-hover {
+  cursor: ew-resize !important;
+}
+
+.geogebra-canvas.axis-y-hover {
+  cursor: ns-resize !important;
+}
+
+/* Floating GeoGebra Toolbar (Top Right / Top Left) */
+.geogebra-toolbar {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 39, 68, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+}
+
+.geo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--navy-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.geo-btn:hover {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: rgba(2, 132, 199, 0.3);
+  color: #0284c7;
+}
+
+.geo-btn.active {
+  background: #0284c7;
+  color: white;
+  border-color: #0284c7;
+}
+
+.geo-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2.2;
+}
+
+.geo-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(15, 39, 68, 0.15);
+  margin: 0 2px;
+}
+
+/* Tooltip for Geo buttons */
+.geo-btn[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: 38px;
+  right: 50%;
+  transform: translateX(50%);
+  background: rgba(15, 23, 42, 0.95);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 50;
+}
+
+.geo-btn[data-tip]:hover::after {
+  opacity: 1;
+}
+
+/* Axis hint indicator */
+.geo-axis-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  background: rgba(15, 25, 45, 0.85);
+  color: #e0f2fe;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  pointer-events: none;
+  opacity: 0.85;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 15;
+}
+
+/* Dynamic Coordinate Readout on Mouse Move */
+.geo-coord-badge {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 39, 68, 0.18);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--navy-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Graphic Style Palette Popover Modal */
+.geo-palette-popover {
+  position: absolute;
+  top: 48px;
+  right: 12px;
+  width: 270px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(15, 39, 68, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 14px;
+  z-index: 40;
+  display: none;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+.geo-palette-popover.open {
+  display: block;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.palette-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(15, 39, 68, 0.12);
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: var(--navy-primary);
+}
+
+.palette-close-btn {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.palette-close-btn:hover {
+  color: var(--color-incognita);
+}
+
+.palette-row {
+  margin-bottom: 10px;
+}
+
+.palette-row-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-secondary);
+  margin-bottom: 5px;
+}
+
+.palette-curve-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.palette-curve-tab {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink-secondary);
+  transition: all 0.15s ease;
+}
+
+.palette-curve-tab.active {
+  background: #ffffff;
+  color: var(--navy-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.palette-color-options {
+  display: flex;
+  gap: 8px;
+}
+
+.palette-color-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.palette-color-dot:hover {
+  transform: scale(1.15);
+}
+
+.palette-color-dot.selected {
+  border-color: #0f172a;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #0284c7;
+}
+
+.palette-width-options, .palette-style-options {
+  display: flex;
+  gap: 6px;
+}
+
+.palette-opt-btn {
+  flex: 1;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 39, 68, 0.15);
+  background: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.palette-opt-btn.selected {
+  background: var(--navy-primary);
+  color: white;
+  border-color: var(--navy-primary);
+}
+
+/* Bottom Parameter Controls Panel for the GeoGebra Grapher */
+.geogebra-controls-bar {
+  background: #f8fafc;
+  border-top: 1px solid rgba(15, 39, 68, 0.15);
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.geo-slider-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+}
+
+.geo-slider-group input[type="range"] {
+  width: 90px;
+  accent-color: #0284c7;
+  cursor: pointer;
+}
+
+.geo-slider-val {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #0284c7;
+  min-width: 38px;
+}
+
+.geo-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.geo-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: white;
+  border: 1px solid rgba(15, 39, 68, 0.15);
+  transition: all 0.15s ease;
+}
+
+.geo-toggle-label:hover {
+  background: #e0f2fe;
+}
+
+.geo-toggle-label input[type="checkbox"] {
+  accent-color: #0284c7;
+  cursor: pointer;
+}
